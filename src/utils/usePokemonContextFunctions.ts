@@ -4,7 +4,7 @@ import { type ListOfPokemon } from '../types/Pokemons.d'
 import { SORT_ALPHABET } from '../consts'
 
 interface ReturnPokemonContextFunctions {
-  pokemonsFiltered: Pokemon[]
+  pokemonsFiltered: ListOfPokemon
   setPokemonsFiltered: (pokemons: ListOfPokemon) => void
   setPokemons: (pokemons: ListOfPokemon) => void
   handleFilter: (name: PokemonName) => void
