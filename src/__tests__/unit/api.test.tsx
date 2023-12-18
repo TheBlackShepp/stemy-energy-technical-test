@@ -3,7 +3,7 @@ import { expect, test} from '@jest/globals';
 import {REQUEST_SATUS, URL} from "../../consts" 
 import axios from 'axios';
 
-test('renders example component', async () => {
+test('API return not undefined', async () => {
     const fetchData = async (): Promise<void> => {
         try {
             const response = await axios.get(URL);
