@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const Pokemons: React.FC<Props> = ({ pokemons }) => {
-  console.log(pokemons)
   return (
     <div className='w-full'>
       <div className='pokemon-list container w-full mx-auto flex flex-wrap gap-1'>
