@@ -11,6 +11,23 @@ describe('Suite Api', () => {
     })
 
     test('API return not undefined', async () => {
-        expect(responseFectch).not.toBeNull()
+        expect(responseFectch).not.toBeUndefined()
+    })
+
+    test('API return bulbasaur', async () => {
+        if (responseFectch) {
+            expect(responseFectch[0].name).toBe("bulbasaur")
+        } else {
+            throw new Error("Response is undefined")
+        }
+    })
+
+    test('API return pidgey', async () => {
+        if (responseFectch) {
+            const isInclude: boolean = responseFectch.some(({name}) => name === "pidgey")
+            expect(isInclude).toBeTruthy()
+        } else {
+            throw new Error("Response is undefined")
+        }
     })
 })
