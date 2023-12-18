@@ -1,6 +1,6 @@
-import axios from "axios";
-import { REQUEST_SATUS, URL } from "../consts";
-import { ListOfPokemon } from "../types/Pokemons.d";
+import axios from "axios"
+import { REQUEST_SATUS, URL } from "../consts"
+import { ListOfPokemon } from "../types/Pokemons.d"
 
 export const fetchPokemonsData = async (): Promise<ListOfPokemon> => {
     try {
