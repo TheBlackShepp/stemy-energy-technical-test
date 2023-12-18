@@ -1,21 +1,23 @@
 import { useEffect } from 'react'
+import axios from 'axios'
 import { Pokemons } from './components/Pokemons'
 import { Header } from './components/Header'
-import { ContextProvider } from './Contexts/Pokemon.c'
+import { ContextProvider } from './contexts/Pokemon.c'
 import { usePokemonContextFunctions } from './utils/usePokemonContextFunctions'
-import { URL } from './consts'
+import { REQUEST_SATUS, URL } from './consts'
 
 const App = (): JSX.Element => {
   const { pokemonsFiltered, setPokemonsFiltered, setPokemons, handleFilter, handleSort } = usePokemonContextFunctions()
 
   const fetchData = async (): Promise<void> => {
     try {
-      const response = await fetch(URL)
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
+      const response = await axios.get(URL);
+
+      if (response.status !== REQUEST_SATUS.ok) {
+        throw new Error('Network response was not ok');
       }
 
-      const data = await response.json()
+      const data = response.data;
 
       setPokemons(data.results)
       setPokemonsFiltered(data.results)

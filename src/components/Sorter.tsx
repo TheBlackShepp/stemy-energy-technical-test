@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useContextFunctionsPokemon } from '../Contexts/Pokemon.c'
+import { useContextFunctionsPokemon } from '../contexts/Pokemon.c'
 
 export const Sorter: React.FC = () => {
   const [rotate, setRotate] = useState<string>('rotate-180')

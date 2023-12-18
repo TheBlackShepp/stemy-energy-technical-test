@@ -1,4 +1,4 @@
-import { useContextFunctionsPokemon } from '../Contexts/Pokemon.c'
+import { useContextFunctionsPokemon } from '../contexts/Pokemon.c'
 
 export const Fitler: React.FC = () => {
   const { onFilter } = useContextFunctionsPokemon()
