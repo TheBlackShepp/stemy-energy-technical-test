@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { type Pokemon, type PokemonName } from '../types/Pokemon'
-import { type ListOfPokemon } from '../types/Pokemons.d'
+import { type ListOfPokemon, type Pokemon, type PokemonName } from '../types/Pokemon.d'
+import { TypeApiResponseElement, TypeResponseApi } from '../types'
 import { SORT_ALPHABET } from '../consts'
 
 interface ReturnPokemonContextFunctions {
@@ -9,12 +9,21 @@ interface ReturnPokemonContextFunctions {
   setPokemons: (pokemons: ListOfPokemon) => void
   handleFilter: (name: PokemonName) => void
   handleSort: () => void
+  convertResponseToPokemons: (response: TypeResponseApi) => ListOfPokemon
 }
 
 export const usePokemonContextFunctions = (): ReturnPokemonContextFunctions => {
   const [pokemons, setPokemons] = useState<ListOfPokemon>([])
   const [pokemonsFiltered, setPokemonsFiltered] = useState<ListOfPokemon>([])
   const [typeSort, setTypeSort] = useState<number>(SORT_ALPHABET.ASCENDING)
+
+  const convertResponseToPokemons = (responseApi: TypeResponseApi): ListOfPokemon => {
+    return responseApi.map((ele: TypeApiResponseElement) => ({
+      id: Number( (ele.url.match(/\/([^/]+)\/?$/) || [])[1] || -1  ),
+      name: ele.name,
+      url: ele.url
+    }))
+  }
 
   const handleFilter = (name: PokemonName): void => {
     const trimmedLowerCaseName = name.trim().toLowerCase()
@@ -30,5 +39,5 @@ export const usePokemonContextFunctions = (): ReturnPokemonContextFunctions => {
     setTypeSort(newTypeSort)
   }
 
-  return { pokemonsFiltered, setPokemonsFiltered, setPokemons, handleFilter, handleSort }
+  return { pokemonsFiltered, setPokemonsFiltered, setPokemons, handleFilter, handleSort, convertResponseToPokemons }
 }

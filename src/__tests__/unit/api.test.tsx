@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom'
 import { expect, test, describe, beforeAll} from '@jest/globals'
 import { fetchPokemonsData } from '../../utils/api'
-import { ListOfPokemon } from '../../types/Pokemons.d'
+import { TypeResponseApi } from '../../types'
 
 describe('Suite Api', () => {
-    let responseFectch: ListOfPokemon | undefined = undefined
+    let responseFectch: TypeResponseApi | undefined = undefined
 
     beforeAll(async() => {
         responseFectch = await fetchPokemonsData()

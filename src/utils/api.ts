@@ -1,8 +1,9 @@
 import axios from "axios"
 import { REQUEST_SATUS, URL } from "../consts"
-import { ListOfPokemon } from "../types/Pokemons.d"
+import { TypeResponseApi } from "../types"
 
-export const fetchPokemonsData = async (): Promise<ListOfPokemon> => {
+
+export const fetchPokemonsData = async (): Promise<TypeResponseApi> => {
     try {
         const response = await axios.get(URL)
 

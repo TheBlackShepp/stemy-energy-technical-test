@@ -1,6 +1,6 @@
-import { type Pokemon as PokemonType } from '../types/Pokemons.d'
+import { type Pokemon as PokemonType } from '../types/Pokemon.d'
 
-export const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
+export const Pokemon: React.FC<PokemonType> = ({ id, name, url }) => {
   return (
     <article className='flex-initial w-28 bg-white shadow'>
       <a
@@ -9,7 +9,8 @@ export const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
       >
         <figure>
           <img
-            src="https://play-lh.googleusercontent.com/mEQTKXkEJ7QwSCmec-cIe9b-GlAMCsG9efBAQV6yUDN6DZVtEuM25A4zfMi47KDUej8=w240-h480-rw" alt="general image pokemon"
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${id}.png`}
+            alt={`${name} image`}
           />
         </figure>
         <h2 className='w-full m-2'>{name}</h2>

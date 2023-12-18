@@ -1,5 +1,5 @@
 import { type ReactNode, createContext, useContext } from 'react'
-import { type PokemonName } from '../types/Pokemon'
+import { type PokemonName } from '../types/Pokemon.d'
 
 interface TypeFunctionFilter {
   onFilter: (name: PokemonName) => void
